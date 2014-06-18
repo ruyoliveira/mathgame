@@ -13,8 +13,8 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Question
-  m_TagString: Untagged
+  m_Name: Pergunta
+  m_TagString: Pergunta
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,9 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b25eb2fd8e0463aa9b73b106295aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnswer: 0
+  correctAnswer: 3
   _textMesh: {fileID: 11400008}
-  resolve: 0
+  solve: 0
+  isCorrect: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
