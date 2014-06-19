@@ -2,6 +2,11 @@ using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
+
+	//Definido por nivel
+	public int minimumCorrect;	//n minimo de resostas corretas do nivel
+	public float levelTimeLimit;
+
 	//Temporario
 	public tk2dTextMesh Text;
 	//
@@ -15,8 +20,7 @@ public class GameManager : MonoBehaviour {
 
 	public int correctAnswer;	//n de respostas corretas
 	public int wrongAnswer;		//n de respostas erradas
-	public float totalTime;		//tempo total transcorrido
-	public int minimumCorrect;	//n minimo de resostas corretas do nivel
+
 	public int soldeAnswers;	//saldo final de respostas corretas/erradas
 	public int weightAnswer;	//peso do saldo total de respostas na pontuacao final
 	public int weightTime;		//peso do tempo na pontuacao fiunal
@@ -25,15 +29,16 @@ public class GameManager : MonoBehaviour {
 	public int countAnswer;		//numero de perguntas respondidas
 	public bool hasCountedAnswer;	//detecta se ja contou a resposta
 
-	float totalTime;
-	float timeOut;
-	bool game;
+	public float totalTime;		//tempo total transcorrido
+	public float timeOut;		//tempo limite
+	public bool game;			//flag de partida em execucao
+	
+
+
 	// Use this for initialization
 	void Start () {
 		//inicializa o primeiro desafio
 		desafios[0].gameObject.SetActive(true);	
-		
-		//inicializa o relogio contador
 
 		//inicializa o numero de desafios
 		numChallenges = desafios.Length;
@@ -50,11 +55,12 @@ public class GameManager : MonoBehaviour {
 
 		hasCountedAnswer = false;
 
-
-
-
+		//inicializacao do tempo
 		totalTime = 0;
-		timeOut = 15;//tempo inicial
+
+		timeOut = levelTimeLimit;//tempo inicial
+
+		//inicializacao da variavel de controle do jogo
 		game = true;
 	}
 	
@@ -64,30 +70,33 @@ public class GameManager : MonoBehaviour {
 		if(_player.solved && !hasCountedAnswer)
 		{
 			hasCountedAnswer = true;	//indica que ja contou esta resposta
+
 			++countAnswer;//incrementa o numero de perguntas respondidas
 
 			//Incrementa o n de respostas corretas se o jogador acertou
 			if(_player.isCorrect)
 			{
 				++correctAnswer;
+
+				IncreaseTimeOut(2.0f);	//bonus de tempo
 			}
+
 			//Incrementa o n de respostas erradas se o jogador acertou
 			else
 			{
 				++wrongAnswer;
+
+				DecrementTimeOut(2.0f);	//penalidade de tempo
 			}
+
 			//Caso o jogador tenha respondido a todas as perguntas do nivel
 			if(countAnswer == numChallenges)
 			{
-				window.correctAnswer = this.correctAnswer;	//atribui a janela respostas erradas
-					
-				window.wrongAnswer = this.wrongAnswer;	//atribui a janela respostas corretas
 
-				window.minimumCorrect = 1;	//numero minimo de respostas corretas do level
+				game = false; //indica o fim da partida
 
-				//Exibe a janela de resultado
-				window.gameObject.SetActive(true);
 			}
+
 			//Caso contrario, lanca a nova pergunta
 			else
 			{
@@ -102,17 +111,33 @@ public class GameManager : MonoBehaviour {
 				desafios[countAnswer].gameObject.SetActive(true);
 				//HABILITA O JOGADOR P RESPONDER DENOVO
 				hasCountedAnswer = false;
+
 			}
+
 		}
-	
+
+		//Se  jogo ainda em andamento
 		if(game){
+
 			UpdateTime ();
-			//temporario
-				if(Input.GetKeyDown(KeyCode.Equals))//incrementa 3s se pressionar +
-					IncreaseTimeOut(3f);
-				else if(Input.GetKeyDown(KeyCode.Minus))//decrementa 3s se pressionar -
-				        DecrementTimeOut(3f);
-			//-------------------
+
+		}
+		//Finaliza a partida
+		else
+		{
+			//configura dados da janela
+			window.correctAnswer = this.correctAnswer;	//atribui a janela respostas erradas
+			
+			window.wrongAnswer = this.wrongAnswer;	//atribui a janela respostas corretas
+			
+			window.minimumCorrect = 1;	//numero minimo de respostas corretas do level
+
+			window.remainingTime = timeOut;	//tempo restante ao fim da partida
+
+			window.totalTime = totalTime;	//tempo total transcorrido
+
+			//Exibe a janela de resultado
+			window.gameObject.SetActive(true);
 		}
 	}
 
@@ -120,7 +145,19 @@ public class GameManager : MonoBehaviour {
 	{
 
 		//DESABILITA ANTIGA PERGUNTA
-		desafios[countAnswer-1].gameObject.SetActive(false);
+		if(countAnswer>0)	//se tiver respondido alguma
+		{
+			//se tiver respondido todas as respostas, desabilita a ultima pergunta
+			if(countAnswer == desafios.Length)
+			{
+				desafios[desafios.Length-1].gameObject.SetActive(false);
+			}
+			//senao, desabilita a ultima pergunta apresentada e nao respondida
+			else
+			{
+				desafios[countAnswer].gameObject.SetActive(false);
+			}
+		}
 
 		//REINICIA OS CONTADORES
 		countAnswer = 0;	//perguntas respoindidas
@@ -131,6 +168,7 @@ public class GameManager : MonoBehaviour {
 
 		//RESETA O PLAYER
 		_player.ResetPlayer();
+
 		_player.question = desafios[countAnswer].questions[0];
 
 		//INSTANCIA A NOVA PERGUNTA
@@ -139,6 +177,9 @@ public class GameManager : MonoBehaviour {
 		//HABILITA O JOGADOR P RESPONDER DENOVO
 		hasCountedAnswer = false;
 
+		//REINICIA O GERENCIADOR DE TEMPO
+		ClearTimer();
+
 		window.gameObject.SetActive(false);
 
 	}
@@ -146,36 +187,69 @@ public class GameManager : MonoBehaviour {
 	{
 	}
 
+	private void ClearTimer()
+	{
+		totalTime = 0.0f;
+
+		timeOut = levelTimeLimit;
+
+		game = true;
+
+	}
 	//atualiza o tempo limite e o tempo total
-	private void UpdateTime(){
+	private void UpdateTime()
+	{
 		totalTime += Time.deltaTime;
+
 		timeOut -= Time.deltaTime;
-		Text.text = "Tempo total: " + totalTime.ToString ("0.0") + " s\nTempo limite: " + timeOut.ToString ("0.0") + " s";//temporario
-		if(timeOut <= 0){
-			Text.text += "\n\n Fim de Jogo!";//temporario
+
+		Text.text = "";
+
+		//Text.text += "Tempo total: " + totalTime.ToString("0.0") + " s \n";
+
+		Text.text += "Tempo limite: " + timeOut.ToString ("0.0") + " s \n";	//tempo limite
+
+		if(timeOut <= 0)
+		{
+			//Text.text += "\n\n Fim de Jogo!"; //temporario
+
 			TimesUp();
 		}
+
 	}
 
 	//
 	//procedimento que incremena o tempo limite
-	public void IncreaseTimeOut(float seconds){
+	public void IncreaseTimeOut(float seconds)
+	{
 		timeOut += seconds;
+
 		print ("Tempo incrementado: " + seconds.ToString ());
 	}
 
 	//Procedimento que decrementa o tempo limite
-	public void DecrementTimeOut(float seconds){
+	public void DecrementTimeOut(float seconds)
+	{
+
 		timeOut -= seconds;
+
+		timeOut = timeOut>0? timeOut:0;	//evita que o valor de timeout seja negativo
+
 		print ("Tempo decrementado: " + seconds.ToString ());
 	}
+
 	//Funçao que retorna o tempo limite
 	public float GetTimeOut(){
+
 		return timeOut;
+
 	}
+
 	private void TimesUp()
 	{
 		timeOut = 0;
+
 		game = false;
 	}
+
 }
