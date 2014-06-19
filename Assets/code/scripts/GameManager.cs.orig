@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 	public tk2dTextMesh Text;
 	//
 
+<<<<<<< HEAD
 	public Challenge[] desafios;
 
 	public ResultWindow window;
@@ -25,9 +26,6 @@ public class GameManager : MonoBehaviour {
 	public int countAnswer;		//numero de perguntas respondidas
 	public bool hasCountedAnswer;	//detecta se ja contou a resposta
 
-	float totalTime;
-	float timeOut;
-	bool game;
 	// Use this for initialization
 	void Start () {
 		//inicializa o primeiro desafio
@@ -53,13 +51,21 @@ public class GameManager : MonoBehaviour {
 
 
 
+=======
+	float totalTime;
+	float timeOut;
+	bool game;
+	// Use this for initialization
+	void Start () {
 		totalTime = 0;
 		timeOut = 15;//tempo inicial
 		game = true;
+>>>>>>> 8fbe0a60a0e4b8a608067ae7dafdb7a8a2077ced
 	}
 	
 	// Update is called once per frame
 	void Update () {
+<<<<<<< HEAD
 		//Jogador respondeu a pergunta
 		if(_player.solved && !hasCountedAnswer)
 		{
@@ -105,6 +111,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	
+=======
 		if(game){
 			UpdateTime ();
 			//temporario
@@ -114,36 +121,6 @@ public class GameManager : MonoBehaviour {
 				        DecrementTimeOut(3f);
 			//-------------------
 		}
-	}
-
-	public void RestartLevel()
-	{
-
-		//DESABILITA ANTIGA PERGUNTA
-		desafios[countAnswer-1].gameObject.SetActive(false);
-
-		//REINICIA OS CONTADORES
-		countAnswer = 0;	//perguntas respoindidas
-
-		correctAnswer = 0;	//respostas corretas
-		
-		wrongAnswer = 0;	//respostas erradas
-
-		//RESETA O PLAYER
-		_player.ResetPlayer();
-		_player.question = desafios[countAnswer].questions[0];
-
-		//INSTANCIA A NOVA PERGUNTA
-		desafios[countAnswer].gameObject.SetActive(true);
-
-		//HABILITA O JOGADOR P RESPONDER DENOVO
-		hasCountedAnswer = false;
-
-		window.gameObject.SetActive(false);
-
-	}
-	public void QuitLevel()
-	{
 	}
 
 	//atualiza o tempo limite e o tempo total
@@ -177,5 +154,36 @@ public class GameManager : MonoBehaviour {
 	{
 		timeOut = 0;
 		game = false;
+>>>>>>> 8fbe0a60a0e4b8a608067ae7dafdb7a8a2077ced
+	}
+
+	public void RestartLevel()
+	{
+
+		//DESABILITA ANTIGA PERGUNTA
+		desafios[countAnswer-1].gameObject.SetActive(false);
+
+		//REINICIA OS CONTADORES
+		countAnswer = 0;	//perguntas respoindidas
+
+		correctAnswer = 0;	//respostas corretas
+		
+		wrongAnswer = 0;	//respostas erradas
+
+		//RESETA O PLAYER
+		_player.ResetPlayer();
+		_player.question = desafios[countAnswer].questions[0];
+
+		//INSTANCIA A NOVA PERGUNTA
+		desafios[countAnswer].gameObject.SetActive(true);
+
+		//HABILITA O JOGADOR P RESPONDER DENOVO
+		hasCountedAnswer = false;
+
+		window.gameObject.SetActive(false);
+
+	}
+	public void QuitLevel()
+	{
 	}
 }
