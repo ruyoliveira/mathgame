@@ -23,7 +23,7 @@ public class QuestionItem : MonoBehaviour {
 
 	
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(solve)
@@ -42,6 +42,14 @@ public class QuestionItem : MonoBehaviour {
 			}
 		}
 	
+	}
+	public void Setup()
+	{
+		solve = false;
+		
+		isCorrect = false;
+		//se ainda nao tiver escolhido a resposta
+		_textMesh.text = "?";
 	}
 
 

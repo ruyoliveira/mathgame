@@ -157,7 +157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100018
 GameObject:
   m_ObjectHideFlags: 1
@@ -427,7 +427,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .553232431, y: 1.82722771, z: 0}
+  m_LocalPosition: {x: 1, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400010}
@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b25eb2fd8e0463aa9b73b106295aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctAnswer: 3
+  correctAnswer: 7
   _textMesh: {fileID: 11400032}
   solve: 0
   isCorrect: 0
@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580455d1395b84e9bbe5a747931c7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answer: 3
+  answer: 4
   _textMesh: {fileID: 11400014}
 --- !u!114 &11400028
 MonoBehaviour:
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   data:
     version: 1
     font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
-    text: 2
+    text: 5
     color: {r: 1, g: 1, b: 1, a: 1}
     color2: {r: 1, g: 1, b: 1, a: 1}
     useGradient: 0
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   data:
     version: 1
     font: {fileID: 11400000, guid: 44e006873ca04f741b2ac3ba5dec92ad, type: 2}
-    text: 5
+    text: 12
     color: {r: 1, g: 1, b: 1, a: 1}
     color2: {r: 1, g: 1, b: 1, a: 1}
     useGradient: 0
@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580455d1395b84e9bbe5a747931c7db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  answer: 2
+  answer: 7
   _textMesh: {fileID: 11400000}
 --- !u!114 &11400050
 MonoBehaviour:
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questions:
   - {fileID: 11400012}
-  answers:
+  options:
   - {fileID: 11400026}
   - {fileID: 11400048}
   elements:
@@ -1392,6 +1392,13 @@ MonoBehaviour:
   operations:
   - {fileID: 11400040}
   equal: {fileID: 11400004}
+  result: {fileID: 11400036}
+  correctAnswer: 3
+  functionResult: 10
+  functionOptions: 0300000005000000
+  functionElems: 07000000
+  functionOp:
+  - +
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

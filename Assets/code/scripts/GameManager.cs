@@ -3,6 +3,9 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
+	//Gerenciador de desafio
+
+	public ChallengesManager _challengeManager;
 	//Definido por nivel
 	public int minimumCorrect;	//n minimo de resostas corretas do nivel
 	public float levelTimeLimit;
@@ -32,19 +35,23 @@ public class GameManager : MonoBehaviour {
 	public float totalTime;		//tempo total transcorrido
 	public float timeOut;		//tempo limite
 	public bool game;			//flag de partida em execucao
+		
 	
 
 
 	// Use this for initialization
 	void Start () {
+		//Carrega os desafios
+		_challengeManager.LoadChallenges();
+		//ARMAZENA OS DESAFIOS
+		desafios = _challengeManager.challenges;
+
 		//inicializa o primeiro desafio
 		desafios[0].gameObject.SetActive(true);	
 
 		//inicializa o numero de desafios
 		numChallenges = desafios.Length;
-
-		_player =  GameObject.FindWithTag("Player").GetComponent<PlayerController>();	//busca o player e armazena a referencia no inicio da partida
-
+	
 		_currentQuestion =  GameObject.FindWithTag("Pergunta").GetComponent<QuestionItem>();	//busca a pergunta na cena e armazena a referencia no inicio da partida
 
 		countAnswer = 0;	//inicializa o numero de perguntas respondidas
@@ -62,6 +69,14 @@ public class GameManager : MonoBehaviour {
 
 		//inicializacao da variavel de controle do jogo
 		game = true;
+
+		//Inicializa o player
+		_player =  GameObject.FindWithTag("Player").GetComponent<PlayerController>();	//busca o player e armazena a referencia no inicio da partida
+
+		_player.question = _currentQuestion;
+
+
+
 	}
 	
 	// Update is called once per frame

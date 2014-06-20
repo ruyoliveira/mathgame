@@ -14,12 +14,17 @@ public class AnswerOptionController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		//Coleta o texto no text mesh
+		//Atribui o texto no text mesh
 		_textMesh.text = answer.ToString();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	public void Setup()
+	{
+		//Coleta o texto no text mesh
+		_textMesh.text = answer.ToString();
 	}
 }
