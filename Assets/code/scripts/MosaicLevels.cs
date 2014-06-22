@@ -39,6 +39,7 @@ public class MosaicLevels : MonoBehaviour {
 			print("posi: " +newPosition.ToString());
 			GameObject bt = NGUITools.AddChild(gameObject, ButtonPrefab);
 			bt.transform.position = newPosition;
+			bt.GetComponent<LevelButton>().level = i+1;
 			print("posi: " +bt.transform.position.ToString());
 			newPosition.x += distanceX;
 		}
