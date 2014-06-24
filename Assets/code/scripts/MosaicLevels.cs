@@ -14,8 +14,8 @@ public class MosaicLevels : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Lines = 3;
-		Coluns = 5;
+		Lines = 4;
+		Coluns = 6;
 		GetPositions ();
 		CreatMosaic ();
 	}
@@ -48,7 +48,7 @@ public class MosaicLevels : MonoBehaviour {
 	private void GetPositions()
 	{
 
-		pointMin = _UICamera.ViewportToScreenPoint(new Vector3(0.1f,0.9f,0));
+		pointMin = _UICamera.ViewportToScreenPoint(new Vector3(0.1f,0.85f,0));
 		pointMax = _UICamera.ViewportToScreenPoint(new Vector3(0.9f,0.1f,0));
 		pointMin = _UICamera.ScreenToWorldPoint (pointMin);
 		pointMax = _UICamera.ScreenToWorldPoint (pointMax);

@@ -18,6 +18,12 @@ public class LevelButton : MonoBehaviour {
 
 	public void LoadScene()
 	{
+		//temporario
+		if (level == 1) {
+			Application.LoadLevel ("core");
+			return;
+		}
+		//
 		string LevelName = mundo + label.text; 
 		if(Application.CanStreamedLevelBeLoaded(LevelName))
 			Application.LoadLevel(LevelName);
