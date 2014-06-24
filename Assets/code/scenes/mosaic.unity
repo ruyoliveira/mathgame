@@ -316,9 +316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96dd583d986402a4889bd9d8531f3e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfButtons: 18
+  numberOfButtons: 8
   _UICamera: {fileID: 885709747}
   ButtonPrefab: {fileID: 100004, guid: ba91734ad0fb10444976a1a23bbe822f, type: 2}
+  buttonWight: 176
 --- !u!1 &1734542808
 GameObject:
   m_ObjectHideFlags: 0
