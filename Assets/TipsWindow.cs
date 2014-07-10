@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TipsWindow : MonoBehaviour {
 	public UILabel lbText;
-
+	public GameObject painelWindow;
 	// Use this for initialization
 	public string tipsText
 	{
@@ -15,12 +15,17 @@ public class TipsWindow : MonoBehaviour {
 		}
 	}
 
+	void Start()
+	{
+		painelWindow.SetActive (false);
+	}
+
 	public void ShowWindow()
 	{
-
+		painelWindow.SetActive (true);
 	}
 	public void CloseWindow()
 	{
-
+		painelWindow.SetActive (false);
 	}
 }

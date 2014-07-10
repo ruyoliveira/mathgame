@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
+	public GameObject curiosityPopup;
+
 	//Gerenciador de desafio
 
 	public ChallengesManager _challengeManager;
@@ -265,6 +267,18 @@ public class GameManager : MonoBehaviour {
 		timeOut = 0;
 
 		game = false;
+	}
+
+
+
+	//
+	public void ShowCuriosityPopup()
+	{
+		curiosityPopup.SetActive (true);
+	}
+	public void CloseCuriosityPopup()
+	{
+		curiosityPopup.SetActive (false);
 	}
 
 }
