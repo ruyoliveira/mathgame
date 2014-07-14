@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class ObjectsManager : MonoBehaviour {
+	public int dragMode;
 	public GameObject objectMeta;
 	public Transform respawn;
 	public int nOfkinds;
@@ -29,6 +30,7 @@ public class ObjectsManager : MonoBehaviour {
 				tempDraggable.dragSpeed = 8;
 				tempDraggable.weight = weights[i];
 				tempDraggable.renderer.material.color = kindColor;
+				tempDraggable.dragMode = dragMode;
 			}
 		}
 	}

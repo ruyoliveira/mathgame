@@ -17,9 +17,14 @@ public class Recipient : MonoBehaviour {
 	{
 		if(colision.gameObject.CompareTag("Objeto"))
 		{
+
 			DraggableObject dragObj = colision.gameObject.GetComponent<DraggableObject>();
-			counter += dragObj.weight;
-			dragObj.gravityScale = 0.2f;//deixa o obj sem gravidade quando entra no recipiente
+			if(dragObj.isCounted == false)
+			{
+				counter += dragObj.weight;
+				dragObj.gravityScale = 0.2f;//deixa o obj sem gravidade quando entra no recipiente
+				dragObj.isCounted = true;
+			}
 		}
 	}
 	void OnTriggerExit2D(Collider2D colision)
@@ -27,8 +32,12 @@ public class Recipient : MonoBehaviour {
 		if(colision.gameObject.CompareTag("Objeto"))
 		{
 			DraggableObject dragObj = colision.gameObject.GetComponent<DraggableObject>();
-			counter -= dragObj.weight;
-			dragObj.gravityScale = 1;//deixa o obj sem gravidade quando entra no recipiente
+			if(dragObj.isCounted == true)
+			{
+				counter -= dragObj.weight;
+				dragObj.gravityScale = 1;//deixa o obj sem gravidade quando entra no recipiente
+				dragObj.isCounted = false;
+			}
 		}
 	}
 }

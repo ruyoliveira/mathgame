@@ -5,18 +5,19 @@ public class DraggableObject : MonoBehaviour {
 	private Rigidbody2D _rigidbody;	//armazenamento estatico do rigidbody
 	private Transform _transform;
 
+
 	public bool isSelected {//Flag objeto selecionado
 		get;
 		set;
 	}
 
 	public float weight;
-
+	public int dragMode;
 	public  Vector3 mousePosition;	//posicao do mouse
 	public  float dragSpeed;	//velocidade de carregar o objeto
 	public float gravityScale;	//gravidade
 	public Transform respawn; //posicao de respawn dos objetos
-
+	public bool isCounted;
 
 
 	// Use this for initialization
@@ -24,6 +25,7 @@ public class DraggableObject : MonoBehaviour {
 		respawn = GameObject.FindWithTag("Respawn").transform;
 		_rigidbody = rigidbody2D;
 		_transform = transform;
+		isCounted = false;
 	}
 	
 	// Update is called once per frame
@@ -34,12 +36,17 @@ public class DraggableObject : MonoBehaviour {
 		double HorizontalSeen = VerticalSeen * Screen.width / Screen.height;
 		if(transform.position.x >  HorizontalSeen / 2 
 		   || transform.position.x < - HorizontalSeen / 2
-		   || transform.position.y >  VerticalSeen 	//deixa sair um pouco da parte superior da tela
+		   || transform.position.y >  VerticalSeen *10	//deixa sair um pouco da parte superior da tela
 		   || transform.position.y < - VerticalSeen / 2
 		   )
 		{
-			_transform.position = respawn.position;
+			_transform.position = new Vector2(respawn.position.x + Random.value,respawn.position.y + Random.value);
 			_rigidbody.velocity = Vector2.zero;
+			isSelected = false;//deseleciona
+			if(dragMode == 1)
+			{
+				this.collider2D.isTrigger = false;
+			}
 		}
 
 
@@ -52,12 +59,20 @@ public class DraggableObject : MonoBehaviour {
 			if(Input.GetMouseButtonUp(0))
 			{
 				isSelected = false;
+				if(dragMode == 1)
+				{
+					Physics2D.IgnoreCollision(this.collider2D,this.collider2D,false);
+					this.collider2D.isTrigger = false;
+				}
 				Debug.Log("Desselecionado");
 			}
 			//Move o personagem
 			else if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) 
 			{
-				
+				if(dragMode == 1)
+				{
+					this.collider2D.isTrigger = true;
+				}
 				//Posicao do mouse enquanto o botao esquero esta clicado
 				Vector3 touchDeltaPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				
