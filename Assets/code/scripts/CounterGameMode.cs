@@ -6,6 +6,8 @@ public class CounterGameMode : MonoBehaviour {
 	public int correctAmount;
 	public bool readyToAnswer;
 
+
+	public GameObject curiosityPopup;
 	// Use this for initialization
 	void Start () {
 		recipient = GameObject.FindWithTag("Recipiente").GetComponent<Recipient>();
@@ -14,7 +16,8 @@ public class CounterGameMode : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-
+		if(Input.GetMouseButtonUp(0))
+			CloseCuriosityPopup();
 	}
 	public void Finished()
 	{
@@ -26,6 +29,16 @@ public class CounterGameMode : MonoBehaviour {
 		else
 		{
 			Debug.Log ("Errou");
+			ShowCuriosityPopup();
 		}
+	}
+
+	public void ShowCuriosityPopup()
+	{
+		curiosityPopup.SetActive (true);
+	}
+	public void CloseCuriosityPopup()
+	{
+		curiosityPopup.SetActive (false);
 	}
 }
