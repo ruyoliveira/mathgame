@@ -22,7 +22,7 @@ public class Recipient : MonoBehaviour {
 			if(dragObj.isCounted == false)
 			{
 				counter += dragObj.weight;
-				dragObj.gravityScale = 0.2f;//deixa o obj sem gravidade quando entra no recipiente
+				dragObj.gravityScale = 1.0f;//deixa o obj sem gravidade quando entra no recipiente
 				dragObj.isCounted = true;
 			}
 		}
