@@ -645,7 +645,7 @@ Prefab:
       objectReference: {fileID: 1272733772}
     - target: {fileID: 11400000, guid: 9db8f01a05ca84f03823dd3bfc69d792, type: 2}
       propertyPath: dragMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 9db8f01a05ca84f03823dd3bfc69d792, type: 2}
       propertyPath: objectMeta
@@ -982,7 +982,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: a0d751a37feb843979df6b1035cf27b5, type: 2}
   - {fileID: 100000, guid: e096ee3db1b6a401fb998e27324e6bb7, type: 2}
   - {fileID: 100000, guid: c6ad5c4fca98648a8a10e9d7e75a55ee, type: 2}
-  dragMode: 0
+  dragMode: 1
   objectMeta: {fileID: 100000, guid: 287d12e38156143589dc3f1f479fa3e0, type: 2}
   respawn: {fileID: 1272733772}
   nOfkinds: 3
