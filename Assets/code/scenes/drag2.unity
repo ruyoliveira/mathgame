@@ -1216,6 +1216,10 @@ Prefab:
       propertyPath: resultText
       value: 
       objectReference: {fileID: 1852784437}
+    - target: {fileID: 11400000, guid: fef52edcb0cd3459da09ed54955ad695, type: 2}
+      propertyPath: pavil
+      value: 
+      objectReference: {fileID: 634646363}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fef52edcb0cd3459da09ed54955ad695, type: 2}
   m_RootGameObject: {fileID: 1707008682}
@@ -1749,7 +1753,7 @@ GameObject:
   - 4: {fileID: 634646365}
   - 212: {fileID: 634646364}
   m_Layer: 0
-  m_Name: problema_1-07
+  m_Name: pavil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,8 +1788,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 634646363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: .419999987, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1191992161}
   m_RootOrder: 2
@@ -1856,8 +1860,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 657772469}
   - 212: {fileID: 657772470}
+  - 114: {fileID: 657772471}
   m_Layer: 0
-  m_Name: problema_1-06
+  m_Name: foguinho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1870,7 +1875,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 657772468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .822541714, y: 0, z: 0}
+  m_LocalPosition: {x: 2.67000008, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1191992161}
@@ -1897,6 +1902,18 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9936efb3078444b56906ed6ccad67571, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &657772471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 657772468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9721cf5de7f61924d93d9e8549040b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pavil: {fileID: 634646365}
 --- !u!1 &799573549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,7 +2181,7 @@ Transform:
   m_PrefabInternal: {fileID: 1879678763}
   m_GameObject: {fileID: 955209359}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 576.393433, y: 324.590149, z: 0}
+  m_LocalPosition: {x: 577.309082, y: 323.345459, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435872494}
@@ -3201,6 +3218,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1707008684}
   - 114: {fileID: 1707008683}
+  - 114: {fileID: 1707008685}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3226,6 +3244,7 @@ MonoBehaviour:
   resultWindow: {fileID: 1656661234}
   resultText: {fileID: 1852784437}
   curiosityPopup: {fileID: 1317263893}
+  pavil: {fileID: 634646363}
 --- !u!4 &1707008684
 Transform:
   m_ObjectHideFlags: 0
@@ -3238,6 +3257,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1707008685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707008682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66a0c7d27e44e742be1a742cc048af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalTime: 0
+  OnTimesUp:
+    mTarget: {fileID: 1707008683}
+    mMethodName: Finished
+    mParameters: []
+    oneShot: 0
 --- !u!1 &1724859316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3814,11 +3850,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 576.393433
+      value: 577.309082
       objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 324.590149
+      value: 323.345459
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
@@ -3835,7 +3871,7 @@ GameObject:
   - 4: {fileID: 1946984488}
   - 212: {fileID: 1946984489}
   m_Layer: 0
-  m_Name: problema_1-05
+  m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

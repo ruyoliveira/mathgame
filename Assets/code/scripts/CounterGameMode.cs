@@ -10,9 +10,13 @@ public class CounterGameMode : MonoBehaviour {
 
 
 	public GameObject curiosityPopup;
+
+	public GameObject pavil;
 	// Use this for initialization
 	void Start () {
 		recipient = GameObject.FindWithTag("Recipiente").GetComponent<Recipient>();
+		GetComponent<TimeControl> ().ClearTimer (30f);
+		GetComponent<TimeControl> ().Resume ();
 		
 	}
 	// Update is called once per frame
@@ -20,6 +24,8 @@ public class CounterGameMode : MonoBehaviour {
 	{
 		if(Input.GetMouseButtonUp(0))
 			CloseCuriosityPopup();
+
+		UpdatePavil ();
 	}
 	public void Finished()
 	{
@@ -29,6 +35,7 @@ public class CounterGameMode : MonoBehaviour {
 			resultWindow.SetActive(true);
 			resultText.text = "Acertou";
 			Debug.Log ("Acertou");
+
 		}
 		else
 		{
@@ -37,6 +44,7 @@ public class CounterGameMode : MonoBehaviour {
 			resultText.text = "Errou";
 			//ShowCuriosityPopup();
 		}
+		GetComponent<TimeControl>().Pause();
 	}
 	public void RestartLevel()
 	{
@@ -54,4 +62,11 @@ public class CounterGameMode : MonoBehaviour {
 	{
 		curiosityPopup.SetActive (false);
 	}
+
+	void UpdatePavil()
+	{
+		float x = (1f - GetComponent<TimeControl> ().GetProgressTime ()) * 3;
+		pavil.transform.localScale = new Vector3 (x, pavil.transform.localScale.y,pavil.transform.localScale.z);
+	}
+
 }
