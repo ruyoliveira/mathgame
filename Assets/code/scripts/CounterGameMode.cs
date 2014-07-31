@@ -12,10 +12,11 @@ public class CounterGameMode : MonoBehaviour {
 	public GameObject curiosityPopup;
 
 	public GameObject pavil;
+	public GameObject bomb;
 	// Use this for initialization
 	void Start () {
 		recipient = GameObject.FindWithTag("Recipiente").GetComponent<Recipient>();
-		GetComponent<TimeControl> ().ClearTimer (30f);
+		GetComponent<TimeControl> ().ClearTimer (5f);
 		GetComponent<TimeControl> ().Resume ();
 		
 	}
@@ -29,6 +30,7 @@ public class CounterGameMode : MonoBehaviour {
 	}
 	public void Finished()
 	{
+		bomb.GetComponent<Animator> ().SetTrigger ("TimesOver");
 		//Avalia a resposta
 		if(recipient.counter == correctAmount)
 		{
