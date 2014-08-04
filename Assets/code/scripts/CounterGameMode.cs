@@ -6,19 +6,22 @@ public class CounterGameMode : MonoBehaviour {
 	public int correctAmount;
 	public bool readyToAnswer;
 	public GameObject resultWindow;
-	public tk2dTextMesh resultText;
+	public UILabel resultText;
 
 
 	public GameObject curiosityPopup;
 
-	public GameObject pavil;
+	public GameObject pavio;
+	private float tamPavio;
 	public GameObject bomb;
+	public Transform foguinho;
 	// Use this for initialization
 	void Start () {
 		recipient = GameObject.FindWithTag("Recipiente").GetComponent<Recipient>();
 		GetComponent<TimeControl> ().ClearTimer (5f);
 		GetComponent<TimeControl> ().Resume ();
-		
+
+		tamPavio = pavio.transform.localScale.x;
 	}
 	// Update is called once per frame
 	void Update () 
@@ -26,11 +29,10 @@ public class CounterGameMode : MonoBehaviour {
 		if(Input.GetMouseButtonUp(0))
 			CloseCuriosityPopup();
 
-		UpdatePavil ();
+		UpdatePavio ();
 	}
 	public void Finished()
 	{
-		bomb.GetComponent<Animator> ().SetTrigger ("TimesOver");
 		//Avalia a resposta
 		if(recipient.counter == correctAmount)
 		{
@@ -44,6 +46,8 @@ public class CounterGameMode : MonoBehaviour {
 			Debug.Log ("Errou");
 			resultWindow.SetActive(true);
 			resultText.text = "Errou";
+			if(!GetComponent<TimeControl>().IsCounting())
+				bomb.GetComponent<Animator> ().SetTrigger ("TimesOver");
 			//ShowCuriosityPopup();
 		}
 		GetComponent<TimeControl>().Pause();
@@ -65,10 +69,15 @@ public class CounterGameMode : MonoBehaviour {
 		curiosityPopup.SetActive (false);
 	}
 
-	void UpdatePavil()
+	
+	void UpdatePavio()
 	{
-		float x = (1f - GetComponent<TimeControl> ().GetProgressTime ()) * 3;
-		pavil.transform.localScale = new Vector3 (x, pavil.transform.localScale.y,pavil.transform.localScale.z);
+		float xScale = (1f - GetComponent<TimeControl> ().GetProgressTime ()) * tamPavio;
+		pavio.transform.localScale = new Vector3 (xScale, pavio.transform.localScale.y,pavio.transform.localScale.z);
+
+		//foguinho
+		float x = pavio.GetComponent<SpriteRenderer>().bounds.size.x + pavio.transform.localPosition.x;
+		foguinho.localPosition = new Vector3(x,foguinho.localPosition.y, foguinho.localPosition.z);
 	}
 
 }

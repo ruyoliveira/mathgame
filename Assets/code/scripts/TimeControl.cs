@@ -56,4 +56,8 @@ public class TimeControl : MonoBehaviour {
 		paused = true;
 		OnTimesUp.Execute ();
 	}
+	public bool IsCounting()
+	{
+		return timeOut > 0;
+	}
 }
