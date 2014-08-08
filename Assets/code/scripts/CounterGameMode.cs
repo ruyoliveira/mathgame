@@ -5,7 +5,6 @@ public class CounterGameMode : MonoBehaviour {
 	public Recipient recipient;
 	public int correctAmount;
 	public bool readyToAnswer;
-	public GameObject resultWindow;
 	public UILabel resultText;
 
 
@@ -15,11 +14,18 @@ public class CounterGameMode : MonoBehaviour {
 	private float tamPavio;
 	public GameObject bomb;
 	public Transform foguinho;
+
+	private TimeControl timeControl;
+	private JanelaResultado janelaResultado;
 	// Use this for initialization
 	void Start () {
 		recipient = GameObject.FindWithTag("Recipiente").GetComponent<Recipient>();
-		GetComponent<TimeControl> ().ClearTimer (5f);
-		GetComponent<TimeControl> ().Resume ();
+
+		timeControl = GetComponent<TimeControl> ();
+		janelaResultado = GameObject.Find ("JanelaResultado").GetComponent<JanelaResultado> ();
+
+		timeControl.ClearTimer (7f);
+		timeControl.Resume ();
 
 		tamPavio = pavio.transform.localScale.x;
 	}
@@ -34,9 +40,9 @@ public class CounterGameMode : MonoBehaviour {
 	public void Finished()
 	{
 		//Avalia a resposta
+		janelaResultado.Show (3);
 		if(recipient.counter == correctAmount)
 		{
-			resultWindow.SetActive(true);
 			resultText.text = "Acertou";
 			Debug.Log ("Acertou");
 
@@ -44,13 +50,12 @@ public class CounterGameMode : MonoBehaviour {
 		else
 		{
 			Debug.Log ("Errou");
-			resultWindow.SetActive(true);
 			resultText.text = "Errou";
-			if(!GetComponent<TimeControl>().IsCounting())
+			if(!timeControl.IsCounting())
 				bomb.GetComponent<Animator> ().SetTrigger ("TimesOver");
 			//ShowCuriosityPopup();
 		}
-		GetComponent<TimeControl>().Pause();
+		timeControl.Pause();
 	}
 	public void RestartLevel()
 	{
@@ -72,7 +77,7 @@ public class CounterGameMode : MonoBehaviour {
 	
 	void UpdatePavio()
 	{
-		float xScale = (1f - GetComponent<TimeControl> ().GetProgressTime ()) * tamPavio;
+		float xScale = (1f - timeControl.GetProgressTime ()) * tamPavio;
 		pavio.transform.localScale = new Vector3 (xScale, pavio.transform.localScale.y,pavio.transform.localScale.z);
 
 		//foguinho
