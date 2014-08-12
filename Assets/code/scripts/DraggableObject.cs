@@ -64,7 +64,7 @@ public class DraggableObject : MonoBehaviour {
 					Physics2D.IgnoreCollision(this.collider2D,this.collider2D,false);
 					this.collider2D.isTrigger = false;
 				}
-				Debug.Log("Desselecionado");
+				//Debug.Log("Desselecionado");
 			}
 			//Move o personagem
 			else if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)) 

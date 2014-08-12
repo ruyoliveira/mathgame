@@ -2,79 +2,97 @@
 using System.Collections;
 
 public class CounterGameMode : MonoBehaviour {
+	//Desafio
 	public Recipient recipient;
 	public int correctAmount;
 	public bool readyToAnswer;
 	public UILabel resultText;
+	public int challengeTimeLimit;	//tempo limite do desafio
 
 
-	public GameObject curiosityPopup;
-
+	//Variaveis do Pavio
 	public GameObject pavio;
 	private float tamPavio;
 	public GameObject bomb;
 	public Transform foguinho;
 
+	//Temporizador
 	private TimeControl timeControl;
+	//Janelas
 	private JanelaResultado janelaResultado;
-	// Use this for initialization
+	public GameObject curiosityPopup;
+
 	void Start () {
+		//Busca recipiente
 		recipient = GameObject.FindWithTag("Recipiente").GetComponent<Recipient>();
-
+		//Busca temporizador
 		timeControl = GetComponent<TimeControl> ();
+		//Busca Janela
 		janelaResultado = GameObject.Find ("JanelaResultado").GetComponent<JanelaResultado> ();
-
-		timeControl.ClearTimer (7f);
+		//Inicializa o temporizador
+		timeControl.ClearTimer (challengeTimeLimit);
 		timeControl.Resume ();
-
+		//Busca pavio
 		tamPavio = pavio.transform.localScale.x;
 	}
+
 	// Update is called once per frame
 	void Update () 
 	{
+		//Fecha janela de curiosidade
 		if(Input.GetMouseButtonUp(0))
+		{
 			CloseCuriosityPopup();
+		}
 
+		//Atualiza pavio
 		UpdatePavio ();
 	}
+
 	public void Finished()
 	{
 		//Avalia a resposta
-		janelaResultado.Show (3);
+		timeControl.Pause();//pausa o tempo
+
 		if(recipient.counter == correctAmount)
 		{
+			CalculatePoints(timeControl.GetProgressTime());//Calcula pontuação baseado na pct do tempo max utilizado
 			resultText.text = "Acertou";
-			Debug.Log ("Acertou");
 
 		}
 		else
 		{
-			Debug.Log ("Errou");
+			CalculatePoints(1000);//Calcula pontuação baseado na pct do tempo max utilizado
 			resultText.text = "Errou";
+			//Explode a bomba somente se a resposta for errada
 			if(!timeControl.IsCounting())
 				bomb.GetComponent<Animator> ().SetTrigger ("TimesOver");
 			//ShowCuriosityPopup();
 		}
-		timeControl.Pause();
+
 	}
+
 	public void RestartLevel()
 	{
 		StartCoroutine("AsyncRestart");
 	}
+
 	IEnumerator AsyncRestart() {
 		Application.LoadLevel(Application.loadedLevel);
 		yield return new WaitForSeconds(5.0f);
 	}
+
 	public void ShowCuriosityPopup()
 	{
 		curiosityPopup.SetActive (true);
 	}
+
 	public void CloseCuriosityPopup()
 	{
 		curiosityPopup.SetActive (false);
 	}
 
-	
+	//Anima pavio
 	void UpdatePavio()
 	{
 		float xScale = (1f - timeControl.GetProgressTime ()) * tamPavio;
@@ -83,6 +101,26 @@ public class CounterGameMode : MonoBehaviour {
 		//foguinho
 		float x = pavio.GetComponent<SpriteRenderer>().bounds.size.x + pavio.transform.localPosition.x;
 		foguinho.localPosition = new Vector3(x,foguinho.localPosition.y, foguinho.localPosition.z);
+	}
+	private void CalculatePoints(float param)
+	{
+		if(param == 1000)
+		{
+			janelaResultado.Show (0);
+		}
+		else if(param < 0.5f)
+		{
+			janelaResultado.Show (3);
+		}
+		else if(param< 0.75f)
+		{
+			janelaResultado.Show (2);
+		}
+		else
+		{
+			janelaResultado.Show (1);
+		}
+
 	}
 
 }
