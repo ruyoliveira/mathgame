@@ -1,6 +1,8 @@
 fileFormatVersion: 2
-guid: 74c44afc9b6fc7b47b476e7b30894d6e
+guid: 5a319cfaf9afa41b683cef3fe25cea50
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: star_casual
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -20,10 +22,10 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -3
+  maxTextureSize: 4096
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: 1
     mipBias: -1
     wrapMode: 1
@@ -36,7 +38,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 300
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
