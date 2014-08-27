@@ -6,6 +6,8 @@ public class UiRootControl : MonoBehaviour {
 	public UIButton gameMenu;
 	public UIButton restartLevel;
 	public UIButton resume;
+
+	public TweenScale confirmacaoMenuTween;
 	//public Shader shader;
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,11 @@ public class UiRootControl : MonoBehaviour {
 	public void OnClick_gameMenu()
 	{
 		print ("Clicou - GameMenu");
+		gameMenu.isEnabled = false;
+		restartLevel.isEnabled = false;
+		resume.isEnabled = false;
+		confirmacaoMenuTween.PlayForward ();
+
 	}
 	public void OnClick_restartLevel()
 	{
@@ -32,6 +39,7 @@ public class UiRootControl : MonoBehaviour {
 		pause.gameObject.GetComponent<UIPlayTween> ().Play (false);
 		pause.isEnabled = true;
 		Time.timeScale = 1;
+
 	}
 	public void OnClick_Pause()
 	{
@@ -42,5 +50,24 @@ public class UiRootControl : MonoBehaviour {
 	public void OnClick_NextLevel()
 	{
 		print ("Clicou - NextLevel");
+		if(!Application.loadedLevelName.Contains ("s9"))
+		{
+			Application.LoadLevel(Application.loadedLevel + 1);
+		}
+		else
+			Application.LoadLevel("gameMenu");
 	}
+
+	public void PopupMenuSim()
+	{
+		Application.LoadLevel ("gameMenu");
+	}
+	public void PopupMenuNao()
+	{
+		gameMenu.isEnabled = true;
+		restartLevel.isEnabled = true;
+		resume.isEnabled = true;
+		confirmacaoMenuTween.PlayReverse ();
+	}
+
 }

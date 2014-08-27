@@ -1,0 +1,23 @@
+1º) Joaozinho tem 1 maçã e 2 peras. Ele precisa de 3 maçãs, 2 bananas e 3 peras para fazer uma salada de fruta. Ajude
+ ele preenchendo a cesta da direita com as frutas que faltam.
+
+2º) Marcos come 2 maçãs e 1 pera por dia. E a cada dois dias ele come 1 banana.
+Coloque na cesta a quantida de frutas que ele precisa comprar para comer por 2 dias.
+
+3º) Pedro precisa ir a feira comprar frutas para seus irmãos. O mais irmão velho pediu 2 bananas, o irmão do meio pediu 3 peras, já o caçula, por ser guloso, pediu o triplo do irmão mais velho, o dobro do irmão do meio, e ainda 2 maçãs. Coloque na cesta a quantidade total de frutas que Pedro precisará comprar.
+
+4º) Antônio tem 3 maçãs, quantas mais ele precisa para completar 4 pares?
+Complete a cesta com a resposta.
+5º) Para fazer um piquenique, Marta e Cesar combinaram de levar 3 bananas, 3 maçãs e 3 pêras. Marta disse que levaria 2 pêras, 1 banana e 1 maçã. Complete a cesta com as frutas que Cesar precisa levar para o piquenique.
+
+6ª) Maria possui 7 bananas e 4 maçãs. Complete a cesta com as frutas que faltam para que Maria tenha 1 dúzia de bananas e meia dúzia de maçãs.
+
+7º) Gilmar sempre compra uma fruta diferente por dia. Hoje maçã, amanhã pêra, depois de amanhã banana, sempre nessa ordem. Se Gilmar comprar 1 pêra na segunda-feira, qual total de frutas ele terá até domingo? Coloque na cesta o resultado.
+
+p 3
+b 2
+m 3
+
+8º) Marcos tem uma plantação de pêras, maçãs e bananas. Ele sempre tira um terço do que colher para o próprio consumo, e então vende na feira o restante. Na mesa esta o total de frutas que ele colheu hoje. Coloque na cesta apenas as frutas que ele deve levar para vender na feira.
+
+9º) Jonas sempre sempara para a caridade metade das frutas que compra. Quando a quantidade é impar, ele não se importa em ficar com a menor parte. Na mesa estão as frutas que ele comprou essa semana. Coloque na cesta a parte que irá para a caridade.

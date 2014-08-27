@@ -7,11 +7,27 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/Level.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/code/scenes/gameMenu.unity
   - enabled: 0
     path: Assets/code/scenes/mosaic.unity
   - enabled: 0
     path: Assets/code/scenes/core.unity
   - enabled: 1
-    path: Assets/code/scenes/drag2.unity
+    path: Assets/code/scenes/world 1/w1s1.unity
+  - enabled: 1
+    path: Assets/code/scenes/world 1/w1s2.unity
+  - enabled: 1
+    path: Assets/code/scenes/world 1/w1s3.unity
+  - enabled: 1
+    path: Assets/code/scenes/world 1/w1s4.unity
+  - enabled: 1
+    path: Assets/code/scenes/world 1/w1s5.unity
+  - enabled: 1
+    path: Assets/code/scenes/world 1/w1s6.unity
+  - enabled: 1
+    path: Assets/code/scenes/world 1/w1s7.unity
+  - enabled: 1
+    path: Assets/code/scenes/world 1/w1s8.unity
+  - enabled: 1
+    path: Assets/code/scenes/world 1/w1s9.unity

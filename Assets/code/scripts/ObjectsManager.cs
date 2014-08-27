@@ -2,10 +2,10 @@
 using System.Collections;
 
 public class ObjectsManager : MonoBehaviour {
-	public Sprite[] objSprites;
+	//public Sprite[] objSprites;
 	public GameObject[] objPrefabs;
 	public int dragMode;
-	public GameObject objectMeta;
+	//public GameObject objectMeta;
 	public Transform respawn;
 	public int nOfkinds;
 	public int[] amounts;
