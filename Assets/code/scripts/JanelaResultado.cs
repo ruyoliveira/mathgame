@@ -3,6 +3,7 @@ using System.Collections;
 
 public class JanelaResultado : MonoBehaviour {
 	public GameObject window;
+	public UIButton btNextLevel;
 	public GameObject[] goldStars;
 
 	// Use this for initialization
@@ -29,5 +30,10 @@ public class JanelaResultado : MonoBehaviour {
 		{
 			goldStars[i].SetActive(true);
 		}
+	}
+
+	public void OnClickMenuButton()
+	{
+		Application.LoadLevel ("gameMenu");
 	}
 }

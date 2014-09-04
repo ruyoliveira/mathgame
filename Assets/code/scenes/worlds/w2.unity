@@ -1765,7 +1765,7 @@ Prefab:
       objectReference: {fileID: 2012198141}
     - target: {fileID: 11400000, guid: fef52edcb0cd3459da09ed54955ad695, type: 2}
       propertyPath: correctAmount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fef52edcb0cd3459da09ed54955ad695, type: 2}
       propertyPath: challengeTimeLimit
@@ -2051,7 +2051,7 @@ Transform:
   m_PrefabInternal: {fileID: 1444268803}
   m_GameObject: {fileID: 505761557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .938644409, y: -230.287186, z: 0}
+  m_LocalPosition: {x: -.593261719, y: -230.708405, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 61022463}
@@ -5257,27 +5257,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400048, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -422.037048
+      value: -338.648743
       objectReference: {fileID: 0}
     - target: {fileID: 400048, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 288.563965
+      value: 287.644165
       objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 431.435181
+      value: 346.952362
       objectReference: {fileID: 0}
     - target: {fileID: 400046, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 324.281982
+      value: 324.415161
       objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .938644409
+      value: -.593261719
       objectReference: {fileID: 0}
     - target: {fileID: 400040, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -230.287186
+      value: -230.708405
       objectReference: {fileID: 0}
     - target: {fileID: 11400138, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: onClick.Array.data[0].mTarget
@@ -5321,9 +5321,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400128, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: mText
-      value: "Marta foi \xE0 uma lanchonete comprar pizza. Ela comprou 1/8 da pizza,
-        depois pediu mais 1/4. Depois duas amigas chegaram e comeram 1/2 da pizza.
-        Coloque no prato a quantidade que sobrou."
+      value: "Camila e sua fam\xEDlia comeram uma pizza de 8 peda\xE7os. Os familiares
+        de Camila comeram 3/4 da pizza, e Camila comeu o restante. Coloque no prato
+        quantos peda\xE7os Camila comeu."
       objectReference: {fileID: 0}
     - target: {fileID: 11400128, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: mTrueTypeFont
@@ -5332,10 +5332,6 @@ Prefab:
     - target: {fileID: 11400128, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
       propertyPath: mFont
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 400080, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 216.899994
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 759b3754b50fa8345a1dee5302e7053b, type: 2}
@@ -5758,7 +5754,7 @@ Transform:
   m_PrefabInternal: {fileID: 1444268803}
   m_GameObject: {fileID: 1586136566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31, y: 216.899994, z: 0}
+  m_LocalPosition: {x: 31, y: 211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1744709311}
@@ -5804,9 +5800,9 @@ MonoBehaviour:
   keepCrispWhenShrunk: 1
   mTrueTypeFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   mFont: {fileID: 0}
-  mText: "Marta foi \xE0 uma lanchonete comprar pizza. Ela comprou 1/8 da pizza, depois
-    pediu mais 1/4. Depois duas amigas chegaram e comeram 1/2 da pizza. Coloque no
-    prato a quantidade que sobrou."
+  mText: "Camila e sua fam\xEDlia comeram uma pizza de 8 peda\xE7os. Os familiares
+    de Camila comeram 3/4 da pizza, e Camila comeu o restante. Coloque no prato quantos
+    peda\xE7os Camila comeu."
   mFontSize: 105
   mFontStyle: 0
   mAlignment: 0
@@ -6197,7 +6193,7 @@ Transform:
   m_PrefabInternal: {fileID: 1444268803}
   m_GameObject: {fileID: 1679659066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -422.037048, y: 288.563965, z: 0}
+  m_LocalPosition: {x: -338.648743, y: 287.644165, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 242618017}
@@ -6444,6 +6440,7 @@ GameObject:
   - 4: {fileID: 1707008684}
   - 114: {fileID: 1707008685}
   - 114: {fileID: 1707008683}
+  - 114: {fileID: 1707008686}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6493,7 +6490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipient: {fileID: 651681862}
-  correctAmount: 1
+  correctAmount: 2
   readyToAnswer: 0
   resultText: {fileID: 1392689119}
   challengeTimeLimit: 30
@@ -6501,6 +6498,52 @@ MonoBehaviour:
   bomb: {fileID: 1191992160}
   foguinho: {fileID: 657772469}
   curiosityPopup: {fileID: 2012198141}
+--- !u!114 &1707008686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1707008682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865187aa396e7c94e8d0ef8a008661ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Word: 2
+  Questions:
+  - "Camila e sua fam\xEDlia comeram uma pizza de 8 peda\xE7os. Os familiares de Camila
+    comeram 3/4 da pizza, e Camila comeu o restante. Coloque no prato quantos peda\xE7os
+    Camila comeu."
+  - "Patr\xEDcia, Marcos e Jos\xE9 foram \xE0 pizzaria. Marcos comeu 2/6 da pizza,
+    Patr\xEDcia comeu 1/6 da pizza. J\xE1 Marcos, separou um peda\xE7o para levar
+    para casa e ent\xE3o comeu o restante. Coloque no prato a quantidade de peda\xE7os
+    que Marcos comeu na pizzaria."
+  - "Pedro comprou uma pizza com 8 peda\xE7os. De manh\xE3 ele comeu 1/4 da pizza,
+    a tarde ele comeu 1 peda\xE7o, e a noite comeu 2/5 do que sobrou. O restante ele
+    guardou para o dia seguinte. Coloque no prato a quantidade de pizza que Pedro
+    guardou."
+  - "Marcos e Jo\xE3o ganharam uma pizza com 8 peda\xE7os. Marcos ficou com 1/4 da
+    pizza, e Jo\xE3o o restante. Jo\xE3o comeu apenas 1/3 dos seus peda\xE7os de pizza.
+    Coloque no prato a quantidade de peda\xE7os que sobraram pertecentes a Jo\xE3o."
+  - "Marta foi \xE0 uma lanchonete comprar pizza. Ela comprou 1/8 da pizza, depois
+    pediu mais 1/4. Depois duas amigas chegaram e comeram 1/2 da pizza. Coloque no
+    prato a quantidade que sobrou."
+  - "Tereza comprou uma pizza grande para comer com seus 2 irm\xE3os. O primeiro comeu
+    1/4 da pizza, j\xE1 o segundo, por ser mais guloso, comeu 3/2 vezes mais que o
+    irm\xE3o. Coloque no prato a quantidade que sobrou para Tereza."
+  - "Cesar, Marcos e Jo\xE3o foram a um rod\xEDzio de pizza. Marcos comeu 1 peda\xE7o,
+    Jo\xE3o comeu 2 peda\xE7os, Cesar comeu o dobro do que Marcos comeu mais a quantidade
+    que Jo\xE3o comeu. Os peda\xE7os foram tirados da mesma pizza com 8 fatias. Coloque
+    no prato a quantidade de fatias que sobraram dessa pizza."
+  - "Bia, Robert e Denise Pediram uma pizza grande para o jantar. Cada um comeu a
+    quantidade de peda\xE7os relativa a 1/3 da quantidade de letras em seus nomes.
+    Se a pizza possuia 8 peda\xE7os, quantos sobraram? Coloque no prato o ressultado."
+  - "Pedro comprou uma pizza grande para comer com seus colegas. Pedro comeu 1/6 da
+    quantia total que seus amigos comeram. Se seus amigos comeram 6 peda\xE7os, quantos
+    peda\xE7os sobraram? Coloque no prato o resultado."
+  ChallengeTimeLimits: 320000003200000032000000320000003200000032000000320000003200000032000000
+  Answers: 020000000300000003000000040000000100000004000000010000000300000001000000
+  GenerateObjects: []
 --- !u!1 &1744709310
 GameObject:
   m_ObjectHideFlags: 0
@@ -7118,7 +7161,7 @@ Transform:
   m_PrefabInternal: {fileID: 1444268803}
   m_GameObject: {fileID: 1999350803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 431.435181, y: 324.281982, z: 0}
+  m_LocalPosition: {x: 346.952362, y: 324.415161, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 136610895}

@@ -11,7 +11,7 @@ public class GameMenu : MonoBehaviour {
 
 	public void OnNewGameClick()
 	{
-		Application.LoadLevel ("mosaic");
+		Application.LoadLevel ("WorldSelect");
 	}
 
 	public void OnContinueClick()

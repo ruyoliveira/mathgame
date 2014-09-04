@@ -16,6 +16,9 @@ public class LevelMosaicManager : MonoBehaviour {
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+4,1);
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+5,2);
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+6,3);
+		PlayerPrefs.SetInt("w"+worldNumber+"s"+7,3);
+		PlayerPrefs.SetInt("w"+worldNumber+"s"+8,3);
+		PlayerPrefs.SetInt("w"+worldNumber+"s"+9,3);
 		foreach(Button bt in levelButtons)
 		{
 			LevelButtonData levelBtData = bt.gameObject.GetComponentInChildren<LevelButtonData>();
@@ -58,6 +61,7 @@ public class LevelMosaicManager : MonoBehaviour {
 	}
 	public void LoadLevel(int levelNumber)
 	{
-		Application.LoadLevelAsync("w"+worldNumber+"s"+levelNumber);
+		PlayerPrefs.SetInt ("CurrentLevel", levelNumber);
+		Application.LoadLevel("w" + worldNumber.ToString());
 	}
 }

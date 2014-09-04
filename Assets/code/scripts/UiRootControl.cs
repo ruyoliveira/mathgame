@@ -6,7 +6,6 @@ public class UiRootControl : MonoBehaviour {
 	public UIButton gameMenu;
 	public UIButton restartLevel;
 	public UIButton resume;
-
 	public TweenScale confirmacaoMenuTween;
 	//public Shader shader;
 	// Use this for initialization
@@ -50,9 +49,11 @@ public class UiRootControl : MonoBehaviour {
 	public void OnClick_NextLevel()
 	{
 		print ("Clicou - NextLevel");
-		if(!Application.loadedLevelName.Contains ("s9"))
+		int currentLevel = PlayerPrefs.GetInt ("CurrentLevel", 1);
+		if(currentLevel!=9)
 		{
-			Application.LoadLevel(Application.loadedLevel + 1);
+			PlayerPrefs.SetInt("CurrentLevel", currentLevel + 1);
+			Application.LoadLevel(Application.loadedLevel);
 		}
 		else
 			Application.LoadLevel("gameMenu");

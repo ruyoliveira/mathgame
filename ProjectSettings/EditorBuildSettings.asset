@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/code/scenes/core.unity
   - enabled: 1
-    path: Assets/code/scenes/world 1/w1s1.unity
+    path: Assets/code/scenes/worlds/w1.unity
   - enabled: 1
     path: Assets/code/scenes/world 1/w1s2.unity
   - enabled: 1
@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/code/scenes/world 1/w1s9.unity
   - enabled: 1
-    path: Assets/code/scenes/world 2/w2s1.unity
+    path: Assets/code/scenes/worlds/w2.unity
   - enabled: 1
     path: Assets/code/scenes/world 2/w2s2.unity
   - enabled: 1

@@ -17,7 +17,7 @@ public class ObjectsManager : MonoBehaviour {
 		weights= new int[nOfkinds];
 
 	}
-	void Awake()
+	public void Init()
 	{
 		//Instancia e Configura os objetos
 		for(int i=0; i<nOfkinds; i++)
