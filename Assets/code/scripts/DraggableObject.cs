@@ -18,7 +18,7 @@ public class DraggableObject : MonoBehaviour {
 	public float gravityScale;	//gravidade
 	public Transform respawn; //posicao de respawn dos objetos
 	public bool isCounted;
-
+	public bool stopMovimentOnDrop;
 
 	// Use this for initialization
 	void Start () {
@@ -86,6 +86,8 @@ public class DraggableObject : MonoBehaviour {
 		else
 		{
 			_rigidbody.gravityScale = gravityScale;
+			if(stopMovimentOnDrop)
+				_rigidbody.velocity = new Vector2(0f,0f);
 		}
 	}
 	//Seleciona o objeto

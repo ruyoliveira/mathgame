@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 5a319cfaf9afa41b683cef3fe25cea50
+guid: 20ba3e399feb3d44fbfd174e48973453
 TextureImporter:
   fileIDToRecycleName:
-    21300000: star_casual
+    21300000: "Jogo_matem\xE1tica-41"
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -22,10 +22,10 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -3
-  maxTextureSize: 4096
+  textureFormat: -1
+  maxTextureSize: 1024
   textureSettings:
-    filterMode: 1
+    filterMode: -1
     aniso: 1
     mipBias: -1
     wrapMode: 1

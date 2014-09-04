@@ -21,3 +21,34 @@ m 3
 8º) Marcos tem uma plantação de pêras, maçãs e bananas. Ele sempre tira um terço do que colher para o próprio consumo, e então vende na feira o restante. Na mesa esta o total de frutas que ele colheu hoje. Coloque na cesta apenas as frutas que ele deve levar para vender na feira.
 
 9º) Jonas sempre sempara para a caridade metade das frutas que compra. Quando a quantidade é impar, ele não se importa em ficar com a menor parte. Na mesa estão as frutas que ele comprou essa semana. Coloque na cesta a parte que irá para a caridade.
+
+
+-------------------------------------------------------------------------------------------------
+
+
+1º) Camila e sua família comeram uma pizza de 8 pedaços. Os familiares de Camila comeram 3/4 da pizza, e Camila comeu o restante. Coloque no prato quantos pedaços Camila comeu.
+R=2
+
+2º) Patrícia, Marcos e José foram à pizzaria. Marcos comeu 2/6 da pizza, Patrícia comeu 1/6 da pizza. Já Marcos, separou um pedaço para levar para casa e então comeu o restante. Coloque no prato a quantidade de pedaços que Marcos comeu na pizzaria.
+R=3
+
+3º) Pedro comprou uma pizza com 8 pedaços. De manhã ele comeu 1/4 da pizza, a tarde ele comeu 1 pedaço, e a noite comeu 2/5 do que sobrou. O restante ele guardou para o dia seguinte. Coloque no prato a quantidade de pizza que Pedro guardou.
+R=3;
+
+4º) Marcos e João ganharam uma pizza com oito pedaços. Marcos ficou com 1/4 da pizza, e Jõao o restante. Jõao comeu apenas 1/3 dos seus pedaços de pizza. Coloque no prato a quantidade de pedaços que sobraram pertecentes a Jõao.
+R=4
+
+5º) Marta foi à uma lanchonete comprar pizza. Ela comprou 1/8 da pizza, depois pediu mais 1/4. Depois duas amigas chegaram e comeram 1/2 da pizza. Coloque no prato a quantidade que sobrou.
+R=1
+
+6º) Tereza comprou uma pizza grande para comer com seus 2 irmãos. O primeiro comeu 1/4 da pizza, já o segundo, por ser mais guloso, comeu 3/2 vezes mais que o irmão. Coloque no pra a quantidade que sobrou para Tereza.
+R=4
+
+7º) Cesar, Marcos e João foram a um rodízio de pizza. Marcos comeu 1 pedaço, João comeu 2 pedaços, Cesar comeu o dobro do que Marcos comeu mais a quantidade que João comeu. Os pedaços foram tirados da mesma pizza com 8 fatias. Coloque no prato a quantidade de fátias que sobrearam dessa pizza.
+r=1
+
+8º) Bia, Robert e Denise Pediram uma pizza grande para o jantar. Cada um comeu a quantidade de pedaços relativa a 1/3 da quantidade de letras em seus nomes. Se a pizza possuia 8 pedaços, quantos sobraram? Coloque no prato o ressultado.
+R=3
+
+9º) Pedro comprou uma pizza grande para com e dividir com seus colegas. Pedro comeu 1/6 da quantia total que seus amigos comeram. Se seus amigos comeram 6 pedaços, quantos pedaços sobraram? Coloque no prato o resultado.
+R=1;

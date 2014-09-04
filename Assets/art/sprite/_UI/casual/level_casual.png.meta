@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: 8d298de23068842479f81eb2d8f2c44a
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: level_casual_0
+    21300002: level_casual_1
+    21300004: level_casual_2
+    21300006: level_casual_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
