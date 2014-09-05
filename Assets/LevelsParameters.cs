@@ -22,7 +22,7 @@ public class LevelsParameters : MonoBehaviour {
 
 		if (Word == 1)
 		{
-			var parameters = GenerateObjects[CurrentLevel].Split(';');
+			var parameters = GenerateObjects[CurrentLevel-1].Split(';');
 			var objectsManager = GameObject.Find("GeradorDeObjetos").GetComponent<ObjectsManager>();
 			for(int i = 0; i < objectsManager.objPrefabs.Length; i++)
 			{
@@ -30,6 +30,18 @@ public class LevelsParameters : MonoBehaviour {
 			}
 			objectsManager.Init();
 
+		}
+		else if(Word == 3)
+		{
+			//print(CurrentLevel);
+			var parameters = GenerateObjects[CurrentLevel-1].Split(';');
+
+			var objectsManager = GameObject.Find("GeradorDeObjetos").GetComponent<ObjectsGeneratorMatriz>();
+			for(int i = 0; i < objectsManager.prefabs.Length; i++)
+			{
+				objectsManager.amounts[i] = int.Parse(parameters[i]);
+			}
+			objectsManager.Init();
 		}
 	}
 	

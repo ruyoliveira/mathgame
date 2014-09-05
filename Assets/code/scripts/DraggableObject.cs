@@ -12,20 +12,29 @@ public class DraggableObject : MonoBehaviour {
 	}
 
 	public float weight;
-	public int dragMode;
+	public int dragMode;//3 - carnes;
 	public  Vector3 mousePosition;	//posicao do mouse
 	public  float dragSpeed;	//velocidade de carregar o objeto
 	public float gravityScale;	//gravidade
 	public Transform respawn; //posicao de respawn dos objetos
 	public bool isCounted;
 	public bool stopMovimentOnDrop;
+	public bool useRespaw;
 
 	// Use this for initialization
 	void Start () {
-		respawn = GameObject.FindWithTag("Respawn").transform;
+		if(useRespaw)
+			respawn = GameObject.FindWithTag("Respawn").transform;
+		else
+		{
+			respawn = (new GameObject("Respawn " + name)).transform;
+			respawn.parent = transform.parent;
+			respawn.position = transform.position;
+		}
 		_rigidbody = rigidbody2D;
 		_transform = transform;
 		isCounted = false;
+
 	}
 	
 	// Update is called once per frame
@@ -40,8 +49,16 @@ public class DraggableObject : MonoBehaviour {
 		   || transform.position.y < - VerticalSeen / 2
 		   )
 		{
-			_transform.position = new Vector2(respawn.position.x + Random.value,respawn.position.y + Random.value);
+			_rigidbody.angularVelocity = 0f;
+			_rigidbody.angularDrag = 0f;
 			_rigidbody.velocity = Vector2.zero;
+			if(useRespaw)
+				_transform.position = new Vector2(respawn.position.x + Random.value,respawn.position.y + Random.value);
+			else
+			{
+				_transform.position = respawn.position;
+				_transform.eulerAngles = Vector3.zero;
+			}
 			isSelected = false;//deseleciona
 			if(dragMode == 1)
 			{
@@ -85,9 +102,26 @@ public class DraggableObject : MonoBehaviour {
 		}
 		else
 		{
-			_rigidbody.gravityScale = gravityScale;
-			if(stopMovimentOnDrop)
-				_rigidbody.velocity = new Vector2(0f,0f);
+			if(dragMode==3)
+			{
+				if(isCounted)
+				{
+					_rigidbody.isKinematic = false;
+					_rigidbody.gravityScale = gravityScale;
+				}
+				else
+					if(stopMovimentOnDrop)
+					{
+						_rigidbody.velocity = new Vector2(0f,0f);
+						_rigidbody.isKinematic = true;
+					}
+			}
+			else
+			{
+				_rigidbody.gravityScale = gravityScale;
+				if(stopMovimentOnDrop)
+					_rigidbody.velocity = new Vector2(0f,0f);
+			}
 		}
 	}
 	//Seleciona o objeto
