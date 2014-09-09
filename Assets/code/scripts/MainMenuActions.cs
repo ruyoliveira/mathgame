@@ -6,7 +6,7 @@ public class MainMenuActions : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		themeMusic = gameObject.GetComponent<AudioSource>();	//armazena a musica tema
-		DontDestroyOnLoad(themeMusic);
+		//DontDestroyOnLoad(themeMusic);
 	}
 	
 	// Update is called once per frame

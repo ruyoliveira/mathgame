@@ -11,6 +11,8 @@ public class UiRootControl : MonoBehaviour {
 	private bool isPaused;
 	private Animator animator;
 	private CounterGameMode gameManager;
+
+	private string MainMenu = "MainMenu";
 	//public Shader shader;
 	// Use this for initialization
 	void Start () {
@@ -63,12 +65,13 @@ public class UiRootControl : MonoBehaviour {
 			Application.LoadLevel(Application.loadedLevel);
 		}
 		else
-			Application.LoadLevel("gameMenu");
+			Application.LoadLevel(MainMenu);
 	}
 
 	public void PopupMenuSim()
 	{
-		Application.LoadLevel ("gameMenu");
+		Time.timeScale = 1f;
+		Application.LoadLevel (MainMenu);
 	}
 	public void PopupMenuNao()
 	{
