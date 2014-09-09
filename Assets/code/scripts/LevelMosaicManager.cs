@@ -3,12 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class LevelMosaicManager : MonoBehaviour {
-	public Button[] levelButtons;
-	public int worldNumber;
+	private Button[] levelButtons;
+	private int worldNumber;
 	public int maxLevel;
 	// Use this for initialization
 	void Start () {
-		maxLevel = levelButtons.Length;
 		//salvando para teste
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+1,1);
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+2,3);
@@ -19,8 +18,20 @@ public class LevelMosaicManager : MonoBehaviour {
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+7,3);
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+8,3);
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+9,3);
+
+
+		//Inicializa vetor de botoes
+		levelButtons = new Button[maxLevel];
+
+		//Busca os botoes
+		for(int i=0;i<levelButtons.Length;i++)
+		{
+			levelButtons[i] = GameObject.Find("Button"+( ( i+1 ).ToString() )).GetComponent<Button>();
+		}
+		//Mostra N de estrelas nos botoes
 		foreach(Button bt in levelButtons)
 		{
+
 			LevelButtonData levelBtData = bt.gameObject.GetComponentInChildren<LevelButtonData>();
 			string btName = bt.gameObject.name;//armazena  o nome do botao, q contem o numero do level
 
@@ -55,9 +66,10 @@ public class LevelMosaicManager : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	//Executa quando o level é carregado
+	void OnLevelWasLoaded(int sceneIndex) {
+		worldNumber = PlayerPrefs.GetInt("CurrentWorld");
+		Debug.Log (worldNumber);
 	}
 	public void LoadLevel(int levelNumber)
 	{

@@ -9,6 +9,9 @@ public class ButtonEvent : MonoBehaviour {
 	public EventDelegate scaleDown;
 
 	public string level; //If empty quit the application
+
+	public int worldNumber; //If empty quit the application
+
 	
 	private Color originalColor;
 	
@@ -37,8 +40,14 @@ public class ButtonEvent : MonoBehaviour {
 	void OnMouseUpAsButton()       
 	{      
 		if(level.Length>0)
+		{
+			Debug.Log (worldNumber);
+			PlayerPrefs.SetInt("CurrentWorld",worldNumber);
 			Application.LoadLevel(level);
+		}
 		else
+		{
 			Application.Quit();
+		}
 	}
 }
