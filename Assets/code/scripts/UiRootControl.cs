@@ -7,9 +7,16 @@ public class UiRootControl : MonoBehaviour {
 	public UIButton restartLevel;
 	public UIButton resume;
 	public TweenScale confirmacaoMenuTween;
+
+	private bool isPaused;
+	private Animator animator;
+	private CounterGameMode gameManager;
 	//public Shader shader;
 	// Use this for initialization
 	void Start () {
+		isPaused = false;
+		animator = GetComponent<Animator> ();
+		gameManager = GameObject.Find ("GameManager").GetComponent<CounterGameMode> ();
 		//Camera.main.SetReplacementShader (shader, null);
 	}
 	
@@ -21,30 +28,30 @@ public class UiRootControl : MonoBehaviour {
 	public void OnClick_gameMenu()
 	{
 		print ("Clicou - GameMenu");
-		gameMenu.isEnabled = false;
-		restartLevel.isEnabled = false;
-		resume.isEnabled = false;
-		confirmacaoMenuTween.PlayForward ();
+		animator.SetBool ("ConfirmacaoMenu", true);
 
 	}
 	public void OnClick_restartLevel()
 	{
 		print ("Clicou - Restart");
 		Time.timeScale = 1;
-	}
-	public void OnClick_resume()
-	{
-		print ("Clicou - Resume");
-		pause.gameObject.GetComponent<UIPlayTween> ().Play (false);
-		pause.isEnabled = true;
-		Time.timeScale = 1;
-
+		Application.LoadLevel (Application.loadedLevel);
 	}
 	public void OnClick_Pause()
 	{
-		print ("Clicou - Pause");
-		pause.isEnabled = false;
-		Time.timeScale = 0;
+		isPaused = !isPaused;
+		animator.SetBool("pause", isPaused);
+		if(isPaused)
+		{
+			Time.timeScale = 0;
+			print ("Clicou - Pause");
+		}
+		else
+		{
+			print ("Clicou - Resume");
+			Time.timeScale = 1;
+		}
+
 	}
 	public void OnClick_NextLevel()
 	{
@@ -65,10 +72,12 @@ public class UiRootControl : MonoBehaviour {
 	}
 	public void PopupMenuNao()
 	{
-		gameMenu.isEnabled = true;
-		restartLevel.isEnabled = true;
-		resume.isEnabled = true;
-		confirmacaoMenuTween.PlayReverse ();
+		animator.SetBool ("ConfirmacaoMenu", false);
+	}
+	public void OnClick_Confirm()
+	{
+		print ("Confirm");
+		gameManager.Finished ();
 	}
 
 }

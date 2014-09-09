@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class LevelsParameters : MonoBehaviour {
 	public int Word;
@@ -13,15 +14,19 @@ public class LevelsParameters : MonoBehaviour {
 	void Start () 
 	{
 		CounterGameMode counterGameMode = GetComponent<CounterGameMode> ();
-		CurrentLevel = PlayerPrefs.GetInt ("CurrentLevel", 0);
+		CurrentLevel = PlayerPrefs.GetInt ("CurrentLevel", 1);
+		print (CurrentLevel);
+		if(Word ==3 ) CurrentLevel = 1;
 
-		GameObject.Find("Problema").GetComponent<UILabel>().text = Questions[CurrentLevel-1]; // set question
+
+		GameObject.Find("Problema").GetComponent<Text>().text = Questions[CurrentLevel-1]; // set question
 		counterGameMode.challengeTimeLimit = ChallengeTimeLimits[CurrentLevel-1];
 		counterGameMode.correctAmount = Answers[CurrentLevel-1];
 
 
 		if (Word == 1)
 		{
+
 			var parameters = GenerateObjects[CurrentLevel-1].Split(';');
 			var objectsManager = GameObject.Find("GeradorDeObjetos").GetComponent<ObjectsManager>();
 			for(int i = 0; i < objectsManager.objPrefabs.Length; i++)
@@ -29,10 +34,10 @@ public class LevelsParameters : MonoBehaviour {
 				objectsManager.amounts[i] = int.Parse(parameters[i]);
 			}
 			objectsManager.Init();
-
 		}
 		else if(Word == 3)
 		{
+
 			//print(CurrentLevel);
 			var parameters = GenerateObjects[CurrentLevel-1].Split(';');
 
@@ -43,6 +48,7 @@ public class LevelsParameters : MonoBehaviour {
 			}
 			objectsManager.Init();
 		}
+		counterGameMode.Init();
 	}
 	
 	// Update is called once per frame

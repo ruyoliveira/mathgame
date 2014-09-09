@@ -14,7 +14,7 @@ public class ObjectsManager : MonoBehaviour {
 	void Start () 
 	{
 		amounts= new int[nOfkinds];
-		weights= new int[nOfkinds];
+		//weights= new int[nOfkinds];
 
 	}
 	public void Init()

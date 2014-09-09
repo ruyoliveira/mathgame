@@ -94,6 +94,8 @@ MonoBehaviour:
   gravityScale: 0
   respawn: {fileID: 0}
   isCounted: 0
+  stopMovimentOnDrop: 0
+  useRespaw: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

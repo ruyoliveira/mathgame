@@ -6,7 +6,7 @@ public class CounterGameMode : MonoBehaviour {
 	public Recipient recipient;
 	public int correctAmount;
 	public bool readyToAnswer;
-	public UILabel resultText;
+//	public UILabel resultText;
 	public int challengeTimeLimit;	//tempo limite do desafio
 
 
@@ -19,7 +19,7 @@ public class CounterGameMode : MonoBehaviour {
 	//Temporizador
 	private TimeControl timeControl;
 	//Janelas
-	private JanelaResultado janelaResultado;
+	public JanelaResultado janelaResultado;
 	public GameObject curiosityPopup;
 
 	void Start () {
@@ -28,7 +28,9 @@ public class CounterGameMode : MonoBehaviour {
 		//Busca temporizador
 		timeControl = GetComponent<TimeControl> ();
 		//Busca Janela
-		janelaResultado = GameObject.Find ("JanelaResultado").GetComponent<JanelaResultado> ();
+	}
+	public void Init()
+	{
 		//Inicializa o temporizador
 		timeControl.ClearTimer (challengeTimeLimit);
 		timeControl.Resume ();
@@ -40,10 +42,10 @@ public class CounterGameMode : MonoBehaviour {
 	void Update () 
 	{
 		//Fecha janela de curiosidade
-		if(Input.GetMouseButtonUp(0))
-		{
-			CloseCuriosityPopup();
-		}
+//		if(Input.GetMouseButtonUp(0))
+//		{
+//			CloseCuriosityPopup();
+//		}
 
 		//Atualiza pavio
 		UpdatePavio ();
@@ -56,14 +58,12 @@ public class CounterGameMode : MonoBehaviour {
 
 		if(recipient.counter == correctAmount)
 		{
-			CalculatePoints(timeControl.GetProgressTime());//Calcula pontuação baseado na pct do tempo max utilizado
-			resultText.text = "Acertou";
+			CalculatePoints(timeControl.GetProgressTime(), "Acertou");//Calcula pontuação baseado na pct do tempo max utilizado
 
 		}
 		else
 		{
-			CalculatePoints(1000);//Calcula pontuação baseado na pct do tempo max utilizado
-			resultText.text = "Errou";
+			CalculatePoints(1000, "Errou");//Calcula pontuação baseado na pct do tempo max utilizado
 			//Explode a bomba somente se a resposta for errada
 			if(!timeControl.IsCounting())
 				bomb.GetComponent<Animator> ().SetTrigger ("TimesOver");
@@ -102,25 +102,35 @@ public class CounterGameMode : MonoBehaviour {
 		float x = pavio.GetComponent<SpriteRenderer>().bounds.size.x + pavio.transform.localPosition.x;
 		foguinho.localPosition = new Vector3(x,foguinho.localPosition.y, foguinho.localPosition.z);
 	}
-	private void CalculatePoints(float param)
+	private void CalculatePoints(float param, string Resultado)
 	{
 		if(param == 1000)
 		{
-			janelaResultado.Show (0);
+			janelaResultado.Show (0, Resultado);
 		}
 		else if(param < 0.5f)
 		{
-			janelaResultado.Show (3);
+			janelaResultado.Show (3, Resultado);
+			SaveRating(3);
 		}
 		else if(param< 0.75f)
 		{
-			janelaResultado.Show (2);
+			janelaResultado.Show (2, Resultado);
+			SaveRating(2);
 		}
 		else
 		{
-			janelaResultado.Show (1);
+			janelaResultado.Show (1, Resultado);
+			SaveRating(1);
 		}
 
+	}
+	void SaveRating(int newRating)
+	{
+		int currentLevel = PlayerPrefs.GetInt ("CurrentLevel", 1);
+		int currentRating = PlayerPrefs.GetInt (Application.loadedLevelName + "s" + currentLevel.ToString (), 0);
+		if (newRating > currentRating)
+			PlayerPrefs.SetInt (Application.loadedLevelName + "s" + currentLevel.ToString (), newRating);
 	}
 
 }

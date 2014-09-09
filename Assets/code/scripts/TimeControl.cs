@@ -8,7 +8,13 @@ public class TimeControl : MonoBehaviour {
 
 	private bool paused;
 
-	public EventDelegate OnTimesUp;
+	private CounterGameMode manager;
+
+
+	void Start()
+	{
+		manager = GetComponent<CounterGameMode> ();
+	}
 
 	public void ClearTimer(float TotalTime)
 	{	
@@ -54,7 +60,7 @@ public class TimeControl : MonoBehaviour {
 	{
 		timeOut = 0;
 		paused = true;
-		OnTimesUp.Execute ();
+		manager.SendMessage ("Finished");
 	}
 	public bool IsCounting()
 	{
