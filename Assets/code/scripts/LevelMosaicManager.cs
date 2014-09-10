@@ -15,9 +15,8 @@ public class LevelMosaicManager : MonoBehaviour {
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+4,1);
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+5,2);
 		PlayerPrefs.SetInt("w"+worldNumber+"s"+6,3);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+7,3);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+8,3);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+9,3);
+		PlayerPrefs.SetInt("w"+worldNumber+"s"+7,-1);
+		PlayerPrefs.SetInt("w"+worldNumber+"s"+8,-1);
 
 
 		//Inicializa vetor de botoes
