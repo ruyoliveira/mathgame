@@ -356,7 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07ce68be97a2c4b94929544d83be92ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectMeta: {fileID: 100000, guid: c959cc70701c5493f84ff7b904d55299, type: 2}
+  objPrefabs: []
+  dragMode: 0
   respawn: {fileID: 1272733772}
   nOfkinds: 5
   amounts: 0400000002000000040000000400000004000000
@@ -620,6 +621,12 @@ MonoBehaviour:
   recipient: {fileID: 0}
   correctAmount: 0
   readyToAnswer: 0
+  challengeTimeLimit: 0
+  pavio: {fileID: 0}
+  bomb: {fileID: 0}
+  foguinho: {fileID: 0}
+  janelaResultado: {fileID: 0}
+  curiosityPopup: {fileID: 0}
 --- !u!4 &1707008684
 Transform:
   m_ObjectHideFlags: 0
