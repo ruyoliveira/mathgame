@@ -59,7 +59,7 @@ public class UiRootControl : MonoBehaviour {
 	{
 		print ("Clicou - NextLevel");
 		int currentLevel = PlayerPrefs.GetInt ("CurrentLevel", 1);
-		if(currentLevel!=9)
+		if(currentLevel!=8)
 		{
 			PlayerPrefs.SetInt("CurrentLevel", currentLevel + 1);
 			Application.LoadLevel(Application.loadedLevel);

@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 5b458461c1e0e3c48b839b54b95e5821
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: "Jogo_matem\xE1tica-28"
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
