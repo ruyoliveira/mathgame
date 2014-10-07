@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 0c1e1421d7d41b54b9834363d1a93fc4
+guid: 85037b8d2d2c5cc4e8f8dd1c604debdc
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "Jogo_matema\u0301tica-08"
+    21300000: "Jogo_Matem\xE1tica_2_800x600-47"
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -37,7 +37,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 13, y: 13, z: 13, w: 13}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
