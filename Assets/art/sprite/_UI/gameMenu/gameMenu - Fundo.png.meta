@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: e96ba0bcfadfd5146815f7e95bf29481
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: gameMenu - Fundo
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

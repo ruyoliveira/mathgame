@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: e1969218f97c9254a9adadffd932bba4
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: tipsButtons
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
