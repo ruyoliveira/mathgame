@@ -9,14 +9,14 @@ public class LevelMosaicManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//salvando para teste
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+1,1);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+2,3);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+3,2);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+4,1);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+5,2);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+6,3);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+7,-1);
-		PlayerPrefs.SetInt("w"+worldNumber+"s"+8,-1);
+//		PlayerPrefs.SetInt("w"+worldNumber+"s"+1,1);
+//		PlayerPrefs.SetInt("w"+worldNumber+"s"+2,3);
+//		PlayerPrefs.SetInt("w"+worldNumber+"s"+3,2);
+//		PlayerPrefs.SetInt("w"+worldNumber+"s"+4,1);
+//		PlayerPrefs.SetInt("w"+worldNumber+"s"+5,2);
+//		PlayerPrefs.SetInt("w"+worldNumber+"s"+6,3);
+//		PlayerPrefs.SetInt("w"+worldNumber+"s"+7,-1);
+//		PlayerPrefs.SetInt("w"+worldNumber+"s"+8,-1);
 
 
 		//Inicializa vetor de botoes
@@ -37,16 +37,17 @@ public class LevelMosaicManager : MonoBehaviour {
 
 
 			//Verifica se o level esta bloqueado
-			if(PlayerPrefs.GetInt("w"+worldNumber+"s"+levelBtData.levelNumber) == -1)
+			if(PlayerPrefs.GetInt("w"+worldNumber+"s"+levelBtData.levelNumber, -1) == -1)
 			{
-				bt.interactable = false;
+				if(levelBtData.levelNumber != 1)
+					bt.interactable = false;
 			}
 			else
 			{
 				//desbloqueia o proximo level
 				if(levelBtData.levelNumber < maxLevel)//se nao for o ultimo level sendo avaliado
 				{
-					if(PlayerPrefs.GetInt("w"+worldNumber+"s"+(levelBtData.levelNumber+1)) == -1)//se o proximo estiver bloqueado
+					if(PlayerPrefs.GetInt("w"+worldNumber+"s"+(levelBtData.levelNumber+1), -1) == -1)//se o proximo estiver bloqueado
 					{
 						Debug.Log (levelBtData.levelNumber);
 						if(PlayerPrefs.GetInt("w"+worldNumber+"s"+levelBtData.levelNumber) > 0)//se tiver score maior q 0

@@ -22,6 +22,8 @@ public class CounterGameMode : MonoBehaviour {
 	public JanelaResultado janelaResultado;
 	public GameObject curiosityPopup;
 
+	public GameObject pnSaving;
+
 	void Start () {
 		//Busca recipiente
 		recipient = GameObject.FindWithTag("Recipiente").GetComponent<Recipient>();
@@ -107,6 +109,7 @@ public class CounterGameMode : MonoBehaviour {
 		if(param == 1000)
 		{
 			janelaResultado.Show (0, Resultado);
+			SaveRating(0);
 		}
 		else if(param < 0.5f)
 		{
@@ -128,9 +131,31 @@ public class CounterGameMode : MonoBehaviour {
 	void SaveRating(int newRating)
 	{
 		int currentLevel = PlayerPrefs.GetInt ("CurrentLevel", 1);
-		int currentRating = PlayerPrefs.GetInt (Application.loadedLevelName + "s" + currentLevel.ToString (), 0);
+		//print ("1");
+		int currentRating = PlayerPrefs.GetInt (Application.loadedLevelName + "s" + currentLevel.ToString (), -1);
+		//print ("2");
+		string completeLevelName = Application.loadedLevelName + "s" + currentLevel.ToString ();
+		//print ("3");
 		if (newRating > currentRating)
-			PlayerPrefs.SetInt (Application.loadedLevelName + "s" + currentLevel.ToString (), newRating);
+			PlayerPrefs.SetInt (completeLevelName, newRating);
+		//print (completeLevelName + " - " + newRating + " " + timeControl.GetRunningTime().ToString());
+		StartCoroutine (_SaveInParse (completeLevelName, newRating, timeControl.GetRunningTime ()));
+		//print ("5");
+	}
+	IEnumerator _SaveInParse(string completLevelName, int pontuation, float time)
+	{
+		pnSaving.SetActive (true);
+		//int complet = 0;
+		ParseControl.current.SavePontuation (completLevelName, pontuation, time, (MonoBehaviour) this);
+		//while (complet == 0)
+		//	yield return null;
+		//painel.SetActive (false);
+		yield return null;;
+
+	}
+	void ParseDone()
+	{
+		pnSaving.SetActive(false);
 	}
 
 }

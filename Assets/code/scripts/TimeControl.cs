@@ -9,7 +9,7 @@ public class TimeControl : MonoBehaviour {
 	private bool paused;
 
 	private CounterGameMode manager;
-
+	private float runningTime;
 
 	void Start()
 	{
@@ -21,6 +21,7 @@ public class TimeControl : MonoBehaviour {
 		this.TotalTime = TotalTime;
 		timeOut = TotalTime;
 		paused = true;
+		runningTime = 0;
 		
 	}
 	//atualiza o tempo limite e o tempo total
@@ -32,6 +33,7 @@ public class TimeControl : MonoBehaviour {
 
 	private void UpdateTime()
 	{
+		runningTime += Time.deltaTime;
 		timeOut -= Time.deltaTime;
 		if(timeOut <= 0)
 		{
@@ -65,5 +67,9 @@ public class TimeControl : MonoBehaviour {
 	public bool IsCounting()
 	{
 		return timeOut > 0;
+	}
+	public float GetRunningTime()
+	{
+		return runningTime;
 	}
 }
