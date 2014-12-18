@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Parse;
 
@@ -27,6 +28,7 @@ public class LoginSystem : MonoBehaviour {
 
 	//variaveis referentes a janela de cadastro
 	public GameObject _2winCadastrar;
+	public Button _2BtVerificar;
 	public Button _2BtCadastrar;
 	public InputField _2InputNome;
 	public Toggle[] _2Toggles;
@@ -71,15 +73,11 @@ public class LoginSystem : MonoBehaviour {
 		}
 		else if (currentWin == 2)
 		{
-			_2BtCadastrar.interactable = (_2InputNome.value != "") && (_2InputNome.value.Length >= 3) && (_2NickEscolhido != "") && (!processing);
 			if(_2InputNome.value != _2OldString)
 			{
 					_2InputNome.value = GetStringNoAccents(_2InputNome.value.ToUpper());
 					_2OldString = _2InputNome.value;
-			}
-			else
-			{
-
+					_2BtVerificar.interactable = _2OldString.Length >= 3;
 			}
 			if(Input.GetKeyDown(KeyCode.Escape)) SetCurrentWindow(1);
 		}
@@ -96,7 +94,6 @@ public class LoginSystem : MonoBehaviour {
 		bool waiting = true; // flags de controle
 		bool sucesso = false; // flags de controle
 		string warningText = "";
-
 		//tenta login
 		ParseUser.LogInAsync(nickInputLogin.value, nickInputLogin.value).ContinueWith(t => 
 		{
@@ -272,7 +269,8 @@ public class LoginSystem : MonoBehaviour {
 				t.transform.GetComponentInChildren<Text>().text = "-----";
 				t.interactable = false;
 			}
-			StartCoroutine(GerarNicks());
+			_2InputNome.value = "";
+			_2BtCadastrar.interactable = false;
 		}
 		if(currentWin == 4)
 		{
@@ -283,23 +281,21 @@ public class LoginSystem : MonoBehaviour {
 
 		}
 	}
+	public void GeraNicks(){
+		StartCoroutine (GerarNicks ());
+	}
 	IEnumerator GerarNicks()
 	{
 		processing = true;
-		string lastString = "";
-		while(true)
+		_2InputNome.interactable = false;
+		_2BtVerificar.interactable = false;
+		foreach(Toggle t in _2Toggles) 
 		{
-			if(_2InputNome.value == _2OldString && _2OldString.Length >= 3 && _2OldString != lastString)
-			{
-				processing = true;
-				lastString = _2OldString;
+			t.transform.GetComponentInChildren<Text>().text = "-----";
+			t.interactable = false;
+		}
+
 				_2CenterLabel.text = "Verificando...";
-				foreach(Toggle t in _2Toggles) 
-				{
-					t.transform.GetComponentInChildren<Text>().text = "-----";
-					t.interactable = false;
-					
-				}
 				var query1 = ParseUser.Query.WhereEqualTo("nome", _2OldString);
 				int count = -1;
 				Task task1 = query1.CountAsync().ContinueWith(t=>
@@ -315,8 +311,8 @@ public class LoginSystem : MonoBehaviour {
 				});
 				while(!task1.IsCompleted)
 					yield return null;
-				print(count);
-				string subs = lastString.Substring(0, 3);
+				//print(count);
+				string subs = _2OldString.Substring(0, 3);
 				if(count == 0)
 				{
 					string[] nicks = new string[3];
@@ -350,8 +346,7 @@ public class LoginSystem : MonoBehaviour {
 						while(!task2.IsCompleted)
 							yield return null;
 					}while(count != 0);
-					if(_2OldString == lastString)
-					{
+
 						for(int i = 0; i< 3; i++)
 						{
 							_2Toggles[i].transform.GetComponentInChildren<Text>().text = nicks[i];
@@ -359,47 +354,22 @@ public class LoginSystem : MonoBehaviour {
 							_2Toggles[i].isOn = false;
 						}
 						_2CenterLabel.text = "Escolha um Nick:";
-						processing = false;
-					}
 				}
 				else if(count == -1)
 				{
 					_2CenterLabel.text = "Falha ao conectar com o servidor!";
-					_2CenterLabel.text = "  - - - - -";
-					foreach(Toggle t in _2Toggles) 
-					{
-						t.transform.GetComponentInChildren<Text>().text = "-----";
-						t.interactable = false;
-						
-					}
+					_2InputNome.interactable = true;
+					_2BtVerificar.interactable = true;
+	//				_2CenterLabel.text = "  - - - - -";
 				}
 				else
 				{
 					_2CenterLabel.text = "Erro: Ja existe um cadastro com esse nome!";
+					_2InputNome.interactable = true;
+					_2BtVerificar.interactable = true;		
 					//_2CenterLabel.text = "  - - - - -";
-					foreach(Toggle t in _2Toggles) 
-					{
-						t.transform.GetComponentInChildren<Text>().text = "-----";
-						t.interactable = false;
-						
-					}
+	
 				}
-
-			}
-			else if(_2OldString.Length < 3)
-			{
-				_2CenterLabel.text = "  - - - - -";
-				foreach(Toggle t in _2Toggles) 
-				{
-					t.transform.GetComponentInChildren<Text>().text = "-----";
-					t.interactable = false;
-
-				}
-			}
-			yield return new WaitForSeconds (2f);
-		}
-
-
 
 	}
 	IEnumerator CadastrarUsuario()
@@ -410,19 +380,24 @@ public class LoginSystem : MonoBehaviour {
 			ParseUser.LogOut();
 		bool cadastrando = true;
 		string warningString =  "";
-		ParseUser newUser = new ParseUser (){Username = _2NickEscolhido, Password = _2NickEscolhido, Email = ""};
+		ParseUser newUser = new ParseUser (){Username = _2NickEscolhido, Password = _2NickEscolhido};
 		newUser.Add ("nome", _2OldString);
 		newUser.SignUpAsync ().ContinueWith(task=> {
 		
-			if(task.IsFaulted || task.IsCanceled)
+			if(task.IsFaulted)
 			{
-				warningString = "Falha ao Cadastrar.";
-
-				print(task.Exception.Message);
-				foreach(var ex in task.Exception.InnerExceptions){
-					print(ex.Message);
-				}
+				print ("t is faulted");
+//				warningString = "Falha ao Cadastrar.";
+//
+//				print(task.Exception.Message);
+//				foreach(var ex in task.Exception.InnerExceptions){
+//					print(ex.Message);
+//				}
 				//print(pex.HelpLink);
+			}
+			else if(task.IsCanceled)
+			{
+				print("t is canceled");
 			}
 			else
 			{
@@ -441,6 +416,7 @@ public class LoginSystem : MonoBehaviour {
 		{
 			if(_2Toggles[i].isOn){
 				_2NickEscolhido = _2Toggles[i].transform.GetComponentInChildren<Text>().text;
+				_2BtCadastrar.interactable = true;
 				return;
 			}
 		}

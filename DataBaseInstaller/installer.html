@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+        
+    	<script>
+			var divLog;
+			var stringLog = "";
+			function ParseInitialize(){
+				var applicationID = document.getElementById('tbApplicationID').value;
+				var javaKey = document.getElementById('javaKey').value;
+				if(applicationID == "" || javaKey == ""){
+					alert("preencha os campos!");
+					return;
+				}
+				divLog = document.getElementById("_log");
+				stringLog = "";
+				stringLog += "<p> Altenticado </p>";
+				divLog.innerHTML = stringLog;
+				Parse.initialize(applicationID, javaKey);
+				UserConfiguration();
+			}
+			
+			function UserConfiguration(){
+				var user = new Parse.User();
+				user.set("username", "admin");
+				user.set("password", "admin");
+				//user.set("email", "email@example.com");
+				user.set("nome", "admin");
+				user.set("ehProfessor", true);
+				user.set("matricula", "--");
+				
+				 
+				user.signUp(null, {
+				  success: function(user) {
+					// Hooray! Let them use the app now.
+					stringLog += "<p> Usuario administrador criado: {user: admin, password: admin} </p>";
+					divLog.innerHTML = stringLog;
+					DesafiosConfiguration(user);
+				  },
+				  error: function(user, error) {
+					// Show the error message somewhere and let the user try again.
+					stringLog += "<p> Error: " + error.code + " " + error.message + "\n Cheque se as chaves estao corretas! </p>";
+					divLog.innerHTML = stringLog;
+				  }
+				});
+			}
+			
+			function DesafiosConfiguration(userAdmin){
+				var Desafio = Parse.Object.extend("Desafio");
+				var arrayDesafios = [];
+				for(var i = 1; i <= 3; i++){
+					for(var j = 1; j <= 8;j++){
+						var desafio = new Desafio();
+						desafio.set('nome', "w" + i + "s" + j);
+						desafio.set('tema',"Tema" + i);
+						desafio.set('nivel', 0);
+						desafio.set('tempoMaximo', 50);
+						desafio.set('responsavel', userAdmin);
+						arrayDesafios.push(desafio);
+					}
+				}
+				Parse.Object.saveAll(arrayDesafios, {
+					success: function(objs){
+						stringLog += "<p> Desafios configurados </p>";
+						divLog.innerHTML = stringLog;
+						EstatisticasConfiguration(userAdmin,arrayDesafios[1]);
+					},
+					error: function(erro){
+						stringLog += "<p> Error: " + erro.code + " " + erro.message + "</p>";
+						divLog.innerHTML = stringLog;
+					}
+				});
+			}
+			function EstatisticasConfiguration(user, desafio){
+				var Estatistica = Parse.Object.extend("Estatistica");
+				var estatistica = new Estatistica();
+				estatistica.set('aluno', user);
+				estatistica.set('desafio', desafio);
+				estatistica.set('pontuacao', 0);
+				estatistica.set('tempo', 0);
+				
+				estatistica.save(null, {
+					success: function(obj){
+						obj.destroy({
+							success: function(ob){
+								stringLog += "<p> Tabela de estatisticas configurada</p> <p><strong>Concluido</strong></p>";
+								divLog.innerHTML = stringLog;
+							},
+							error: function(ob, err){
+								stringLog += "<p> Error: " + err.code + " " + err.message + "</p>";
+								divLog.innerHTML = stringLog;
+							}
+						});
+					},
+					error: function(obj, error){
+						stringLog += "<p> Error: " + error.code + " " + error.message + "</p>";
+						divLog.innerHTML = stringLog;
+					}
+				});
+			}
+			
+		
+		</script>
+    </head>
+	
+    <body>
+    	<input id="tbApplicationID" type="text" placeholder="Application ID">
+        <input id="javaKey" type="text" placeholder="JavaScript Key">
+    	<button onClick="ParseInitialize()"> Test </button>
+        <div id="_log" > </div>
+    </body>
+
+</html>
