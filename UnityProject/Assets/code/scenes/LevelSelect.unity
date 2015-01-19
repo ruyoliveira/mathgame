@@ -2270,7 +2270,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 128, y: 128}
-  m_Spacing: {x: 40, y: 80}
+  m_Spacing: {x: 40, y: 30.3700008}
 --- !u!1 &1155279705
 GameObject:
   m_ObjectHideFlags: 0
